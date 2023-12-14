@@ -36,7 +36,11 @@ function MemoryGame() {
   //iniciar el juego
   const startGame = () => {
     setStartedGame(true);
-    start(32);
+    start(32);    
+    setShuffledImageCardList(shuffle([
+      ...imageCardList,
+      ...imageCardList,
+    ]));
   };
   const gameLost = () => {
     setLostedGame(true);
@@ -100,16 +104,6 @@ function MemoryGame() {
     setFirstSelectedCard([]);
     setSecondSelectedCard([]);
   };
-
-  useEffect(() => {
-    const auxShuffledImageCardList = shuffle([
-      ...imageCardList,
-      ...imageCardList,
-    ]);
-    setShuffledImageCardList(auxShuffledImageCardList);
-    console.log('a')
-  }, []);
-
   useEffect(() => {
     if (secondSelectedCard.name) {
       validationMatch();
