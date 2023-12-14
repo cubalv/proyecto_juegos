@@ -15,6 +15,9 @@ function HangManGame() {
   const [endText, setEndText]=useState("")
 
   const startGame = () => {
+    setGuessedLetters([]);
+    setErrorCount(0);
+    endedGame(false);
     setStartedGame(true);
     setSecretWord(faker.word.sample({ length: { min: 5, max: 7 }, strategy: "closest" }));
   };
