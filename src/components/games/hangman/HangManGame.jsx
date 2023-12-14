@@ -11,6 +11,8 @@ function HangManGame() {
   const [secretWord, setSecretWord]=useState("")
   const listKeyLetters =[..."ABCDEFGHIJKLMNÑOPQRSTUVWXYZ"]
   const [guessedLetters,setGuessedLetters]=useState([]);
+  const [endedGame, setEndedGame]=useState(false)
+  const [endText, setEndText]=useState("")
 
   const startGame = () => {
     setStartedGame(true);
@@ -21,23 +23,38 @@ function HangManGame() {
     setGuessedLetters([...guessedLetters,letterKey]);
     const auxWord = secretWord.toUpperCase().split('');
     if(!auxWord.includes(letterKey)){
-      setErrorCount(errorsCount+1);}
+      setErrorCount(errorsCount+1);
+      checkLoose();
+    }
       else{
-        errorsCount > 0 ? errorsCount-1 : null
+        errorsCount >= 0 ? setErrorCount(errorsCount-1) : null
       }
       checkWin([...guessedLetters,letterKey],auxWord)
   }
+  const checkLoose=()=>{
+    if(errorsCount+1>6){
+      lostGame(); 
+    }
+  }
   const checkWin=(keysPressed,secretWord)=>{
-    console.log(keysPressed)
-    console.log(secretWord)
     let contador =0;
     keysPressed.map((x)=> secretWord.includes(x) ? contador++ : null)
     if(contador == secretWord.length ){
-      console.log("se gano")
-        return true;        
+        //console.log("se gano")
+        winGame();
       }
-    else 
-        return false
+  }
+  const lostGame =()=>{
+    setStartedGame(false);
+    setTextobtn("Volver a jugar");
+    setEndText("Ha perdido 😥");
+    setEndedGame(true);
+  }
+  const winGame =()=>{
+    setStartedGame(false);
+    setTextobtn("Volver a jugar");
+    setEndText("Ha ganado 🙏");
+    setEndedGame(true);
   }
   return (
     <article className="flex items-center h-screen flex-col w-screen">
@@ -46,6 +63,14 @@ function HangManGame() {
         <span className="font-medium text-red-500">Instrucciones:</span>{" "}
         Debes adivinar la palabra secreta 
       </p>
+      {endedGame ? 
+      (
+        <p className=" text-xl py-4 font-thin">
+          {endText}
+        </p>
+      ):null
+
+      }
       {startedGame ? (
         <div className="w-full flex items-center flex-col">
           <HangManFigure errorsCount={errorsCount} />
