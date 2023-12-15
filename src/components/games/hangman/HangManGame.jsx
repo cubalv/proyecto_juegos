@@ -23,6 +23,7 @@ function HangManGame() {
   };
 
   const keyPushed=(letterKey)=>{
+    console.log(secretWord)
     setGuessedLetters([...guessedLetters,letterKey]);
     const auxWord = secretWord.toUpperCase().split('');
     if(!auxWord.includes(letterKey)){
@@ -30,7 +31,7 @@ function HangManGame() {
       checkLoose();
     }
       else{
-        errorsCount >= 0 ? setErrorCount(errorsCount-1) : null
+        errorsCount >0 ? setErrorCount(errorsCount-1) : null
       }
       checkWin([...guessedLetters,letterKey],auxWord)
   }
@@ -41,9 +42,8 @@ function HangManGame() {
   }
   const checkWin=(keysPressed,secretWord)=>{
     let contador =0;
-    keysPressed.map((x)=> secretWord.includes(x) ? contador++ : null)
+    secretWord.map((x)=> keysPressed.includes(x) ? contador++ : null)
     if(contador == secretWord.length ){
-        //console.log("se gano")
         winGame();
       }
   }
