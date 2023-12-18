@@ -1,7 +1,6 @@
 import React,{ useState } from "react";
 import useCountdown from '../../utilitys/useCountdown.tsx'
 import { faker } from "@faker-js/faker/locale/es_MX";
-import ButtonH from "../../HeaderButton.astro"
 
 
 function TypeRacer(){
@@ -43,7 +42,7 @@ const gameLost = () => {
     return(
         <article id="ContainerGame">
             <h2 className=" text-6xl text-center text-amber-200">TypeRacer</h2>
-            <p className=" text-lg py-4 font-thin"><span className="font-medium text-red-500">Instrucciones:</span> Aparecera una serie de palabras, debes escribirlas lo mas rapido posible. Para insertar la palabra presione el espacio</p>    
+            <p className=" text-lg py-4 font-thin text-center"><span className="font-medium text-red-500">Instrucciones:</span> Aparecera una serie de palabras, debes escribirlas lo mas rapido posible. Para insertar la palabra presione el espacio</p>    
             <div className="flex w-full justify-center">            
                 <p id="lblPalabra" className=" text-4xl text-center my-5 text-orange-300 block w-2/3  rounded-md  border-red-300 border-2 pb-4 pt-2" >{word}</p> 
             </div> 

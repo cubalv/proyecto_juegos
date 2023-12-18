@@ -60,9 +60,9 @@ function HangManGame() {
     setEndedGame(true);
   }
   return (
-    <article className="flex items-center h-screen flex-col w-screen">
+    <article className="flex items-center h-full flex-col w-full">
       <h2 className=" text-6xl text-center text-amber-200">Ahorcado</h2>
-      <p className=" text-lg py-4 font-thin">
+      <p className=" text-lg py-4 font-thin text-center">
         <span className="font-medium text-red-500">Instrucciones:</span>{" "}
         Debes adivinar la palabra secreta 
       </p>
