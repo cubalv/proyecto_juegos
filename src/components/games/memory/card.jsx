@@ -1,4 +1,3 @@
-import { fa } from "@faker-js/faker";
 import React, { useState, useEffect } from "react";
 import ReactCardFlip from "react-card-flip";
 

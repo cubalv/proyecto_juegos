@@ -1,5 +1,3 @@
-import { useState } from "react";
-import hangmansvg from "./resource/hangman_0.svg";
 function HangManFigure({errorsCount}) {
   return (
     <div className=" border-b-2 border-slate-200 w-1/4 h-1/2 mb-6 text-white">

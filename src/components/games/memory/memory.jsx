@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GameBoard from "./gameBoard";
 import useCountdown from "../../utilitys/useCountdown.tsx";
-import { fa } from "@faker-js/faker";
 
 function MemoryGame() {
   //estados
